@@ -92,7 +92,7 @@ public class Main {
         try {
             Connection connection = connection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            selectAllFrom(film);
+            selectTable(film);
             System.out.println("Enter name of the film: ");
             String film = scanner.nextLine();
             preparedStatement.setString (1, film);
@@ -178,7 +178,7 @@ public class Main {
     }
 
     private static void insertCategory(){
-        selectAllFrom(category);
+        selectTable(category);
         System.out.println("Category Name: ");
         String categoryName = scanner.nextLine();
         insert(categoryName);
@@ -199,7 +199,7 @@ public class Main {
     }
 
     private static void insertFilms(){
-        selectAllFrom(film);
+        selectTable(film);
         System.out.println("Film Name: ");
         String filmName = scanner.nextLine();
         System.out.println("Production Company: ");
@@ -248,7 +248,7 @@ public class Main {
         try {
             Connection connection = connection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            selectAllFrom(category);
+            selectTable(category);
             System.out.println("Which ID do you want to update? ");
             int id = Integer.parseInt(scanner.nextLine());
             preparedStatement.setInt(2, id);
@@ -268,7 +268,7 @@ public class Main {
         try {
             Connection connection = connection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            selectAllFrom(film);
+            selectTable(film);
             System.out.println("Which ID do you want to update?");
             int id = Integer.parseInt(scanner.nextLine());
             preparedStatement.setInt(2, id);
@@ -299,7 +299,7 @@ public class Main {
         try {
             Connection connection = connection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            selectAllFrom(table);
+            selectTable(table);
             System.out.println("Enter " + table + " to be deleted: ");
             String name = scanner.nextLine();
             preparedStatement.setString(1, name);
@@ -311,7 +311,7 @@ public class Main {
     }
 
 
-    private static void selectAllFrom(String table){
+    private static void selectTable(String table){
         String sql = "SELECT * FROM " + table;
 
         try {

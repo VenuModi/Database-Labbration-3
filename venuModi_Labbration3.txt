@@ -1,0 +1,51 @@
+CREATE TABLE category (
+categoryID INTEGER PRIMARY KEY,
+categoryName TEXT
+ );
+
+CREATE TABLE film(
+filmID INTEGER PRIMARY KEY,
+filmName TEXT,
+productionCO TEXT,
+PriceOfCD REAL,
+filmCategoryIDFK INTEGER
+);
+
+INSERT INTO category (categoryName)
+VALUES ('Comedy'), ('Horror');
+
+INSERT INTO film (filmName, productionCO, PriceOfCD, filmCategoryIDFK)
+VALUES ('Shrek-The Third', 'Paramount Pictures', 100, 1),
+       ('The Jaws', 'Walt Disney Studios', 120, 2),
+       ('Minions', 'Walt Disney Studios', 150, 1);
+
+
+SELECT * FROM category;
+SELECT * FROM film;
+
+SELECT *
+FROM film
+INNER JOIN category
+ON film.filmCategoryIDFK = category.categoryID;
+
+UPDATE film
+SET filmName = 'Avatar' WHERE filmID = 2;
+
+UPDATE category
+SET categoryName = 'Romance' WHERE categoryID = 3;
+
+
+SELECT * FROM film WHERE filmName LIKE 'S%';
+
+SELECT COUNT (*) FROM film;
+
+DELETE FROM film
+WHERE filmName = 'Minions';
+
+DELETE FROM category
+WHERE categoryName = 'Comedy';
+
+SELECT filmName, productionCO
+FROM film
+WHERE filmName = 'Shrek-The Third'
+GROUP BY filmName;
